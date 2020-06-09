@@ -1,0 +1,17 @@
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="original" >
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+  </form>
+
+  {% if uploaded_file_url %}
+    <img src="./media/1.jpg" style="width:300px">
+    <img src="./media/2.jpg" style="width:300px">
+    <p>the sim score is <h1>{{score}}</h1></p>
+    <p>the mse score is <h1>{{mseScore}}</h1></p>
+    <p>the calculated score is <h1>{{calcScore}}</h1></p>
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+  {% endif %}
+{% endblock %}
